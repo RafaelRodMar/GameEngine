@@ -1,0 +1,15 @@
+snd boo boo.wav
+snd taunt taunt.wav
+snd whack whack.wav
+mus music music.ogg
+img gameover gameover.png
+img guy1 guy1.png
+img guy2 guy2.png
+img guy3 guy3.png
+img guy4 guy4.png
+img guy5 guy5.png
+img office office.png
+img pow pow.png
+img smallguy smallguy.png
+img target target.png
+fnt font sansation.ttf
