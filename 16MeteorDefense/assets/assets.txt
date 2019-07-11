@@ -1,0 +1,12 @@
+snd bigexpl bigexplode.wav
+snd expl explode.wav
+snd fire fire.wav
+mus music music.ogg
+img city city.png
+img expl explosion.png
+img gameover gameover.png
+img ground ground.png
+img meteor meteor.png
+img missile missile.png
+img target target.png
+fnt font sansation.ttf
