@@ -35,11 +35,12 @@
 			<Add library="dxguid" />
 			<Add directory="C:/SFML-2.5.1/lib" />
 		</Linker>
+		<Unit filename="AlienSprite.h" />
 		<Unit filename="Background.h" />
 		<Unit filename="CSprite.h" />
 		<Unit filename="GameEngine.h" />
+		<Unit filename="Global.h" />
 		<Unit filename="Main.cpp" />
-		<Unit filename="Various.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

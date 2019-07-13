@@ -44,20 +44,23 @@ CSprite* AlienSprite::AddSprite()
     if( GetName() == "blobbo" )
     {
         //blobbo missile
-        pSprite = new CSprite(mTextures["blobbo"], rcBounds, BA_DIE);
-        pSprite->SetVelocity(0,7);
+        pSprite = new CSprite(mTextures["bmissile"], rcBounds, BA_DIE);
+        pSprite->SetName("bmissile");
+        pSprite->SetVelocity(0,49);
     }
     else if( GetName() == "jelly" )
     {
         //jelly missile
-        pSprite = new CSprite(mTextures["jelly"], rcBounds, BA_DIE);
-        pSprite->SetVelocity(0,5);
+        pSprite = new CSprite(mTextures["jmissile"], rcBounds, BA_DIE);
+        pSprite->SetName("jmissile");
+        pSprite->SetVelocity(0,35);
     }
     else
     {
         //timmy missile
-        pSprite = new CSprite(mTextures["timmy"], rcBounds, BA_DIE);
-        pSprite->SetVelocity(0,3);
+        pSprite = new CSprite(mTextures["tmissile"], rcBounds, BA_DIE);
+        pSprite->SetName("tmissile");
+        pSprite->SetVelocity(0,21);
     }
 
     //set the missile sprite's position and return it
