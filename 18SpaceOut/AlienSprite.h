@@ -2,7 +2,7 @@ class AlienSprite : public CSprite
 {
 public:
     //constructor/destructor
-    AlienSprite(sf::Texture &pTexture, sf::FloatRect rcBounds, BOUNDSACTION baBoundsAction = BA_STOP);
+    AlienSprite(const std::string &texture, sf::FloatRect rcBounds, BOUNDSACTION baBoundsAction = BA_STOP);
     virtual ~AlienSprite();
 
     //general methods
@@ -13,7 +13,7 @@ public:
 /////////////////////////////////////////////////////////////
 
 //constructor/ destructor
-AlienSprite::AlienSprite(sf::Texture &pTexture, sf::FloatRect rcBounds, BOUNDSACTION baBoundsAction) : CSprite(pTexture, rcBounds, baBoundsAction)
+AlienSprite::AlienSprite(const std::string &texture, sf::FloatRect rcBounds, BOUNDSACTION baBoundsAction) : CSprite(texture, rcBounds, baBoundsAction)
 {
 }
 
@@ -44,21 +44,21 @@ CSprite* AlienSprite::AddSprite()
     if( GetName() == "blobbo" )
     {
         //blobbo missile
-        pSprite = new CSprite(mTextures["bmissile"], rcBounds, BA_DIE);
+        pSprite = new CSprite("bmissile", rcBounds, BA_DIE);
         pSprite->SetName("bmissile");
         pSprite->SetVelocity(0,49);
     }
     else if( GetName() == "jelly" )
     {
         //jelly missile
-        pSprite = new CSprite(mTextures["jmissile"], rcBounds, BA_DIE);
+        pSprite = new CSprite("jmissile", rcBounds, BA_DIE);
         pSprite->SetName("jmissile");
         pSprite->SetVelocity(0,35);
     }
     else
     {
         //timmy missile
-        pSprite = new CSprite(mTextures["tmissile"], rcBounds, BA_DIE);
+        pSprite = new CSprite("tmissile", rcBounds, BA_DIE);
         pSprite->SetName("tmissile");
         pSprite->SetVelocity(0,21);
     }

@@ -10,6 +10,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
+//global common variables
+int fireinputdelay;
+int score, numlives, difficulty;
+bool gameover = false;
+bool canfire = true;
+
 #include "Global.h"
 #include "CSprite.h"
 #include "AlienSprite.h"
@@ -19,6 +25,10 @@
 GameEngine *pGame;
 StarryBackground* pBackground;
 CSprite* pCarSprite;
+
+//functions
+void NewGame();
+void AddAlien();
 
 bool GameInitialize()
 {
@@ -114,7 +124,7 @@ void HandleKeys()
             //create a new missile sprite
             sf::FloatRect rcBounds(0,0,600,450);
             sf::FloatRect rcPos = pCarSprite->GetPosition();
-            CSprite* pSprite = new CSprite(mTextures["missile"], rcBounds, BA_DIE);
+            CSprite* pSprite = new CSprite("missile", rcBounds, BA_DIE);
             pSprite->SetName("missile");
             pSprite->SetPosition(rcPos.left + 15, 400);
             pSprite->SetVelocity(0,-50);
@@ -171,7 +181,7 @@ bool SpriteCollision(CSprite* pSpriteHitter, CSprite* pSpriteHittee)
         else
             rcPos = pSpriteHitter->GetPosition();
 
-        CSprite* pSprite = new CSprite(mTextures["lgexplosion"], rcBounds);
+        CSprite* pSprite = new CSprite("lgexplosion", rcBounds);
         pSprite->setNumFrames(8,true);
         pSprite->SetPosition(rcPos.left, rcPos.top);
         pGame->AddSprite(pSprite);
@@ -203,7 +213,7 @@ bool SpriteCollision(CSprite* pSpriteHitter, CSprite* pSpriteHittee)
       rcPos = pSpriteHitter->GetPosition();
     else
       rcPos = pSpriteHittee->GetPosition();
-    CSprite* pSprite = new CSprite(mTextures["lgexplosion"], rcBounds);
+    CSprite* pSprite = new CSprite("lgexplosion", rcBounds);
     pSprite->setNumFrames(8, true);
     pSprite->SetPosition(rcPos.left, rcPos.top);
     pGame->AddSprite(pSprite);
@@ -235,7 +245,7 @@ void SpriteDying(CSprite* pSprite)
     // Create a small explosion sprite at the missile's position
     sf::FloatRect rcBounds(0, 0, 600, 450);
     sf::FloatRect rcPos = pSprite->GetPosition();
-    CSprite* pSprite = new CSprite(mTextures["smexplosion"], rcBounds);
+    CSprite* pSprite = new CSprite("smexplosion", rcBounds);
     pSprite->setNumFrames(8, true);
     pSprite->SetPosition(rcPos.left, rcPos.top);
     pGame->AddSprite(pSprite);
@@ -249,7 +259,7 @@ void NewGame()
 
     //create the car sprite
     sf::FloatRect rcBounds(0,0,600,450);
-    pCarSprite = new CSprite(pGame->getTexture("car"), rcBounds, BA_WRAP);
+    pCarSprite = new CSprite("car", rcBounds, BA_WRAP);
     pCarSprite->SetPosition(300,405);
     pCarSprite->SetName("car");
     pGame->AddSprite(pCarSprite);
@@ -269,12 +279,12 @@ void AddAlien()
 {
     //create a new random alien sprite
     sf::FloatRect rcBounds(0,0,600,410);
-    AlienSprite* pSprite;
+    AlienSprite* pSprite = nullptr;
     switch( rnd.getRndInt(0,2) )
     {
     case 0:
         //Blobbo
-        pSprite = new AlienSprite(mTextures["blobbo"], rcBounds, BA_BOUNCE);
+        pSprite = new AlienSprite("blobbo", rcBounds, BA_BOUNCE);
         pSprite->SetName("blobbo");
         pSprite->setNumFrames(8);
         pSprite->SetPosition( rnd.getRndInt(0,1) == 0 ? 0: 600, rnd.getRndInt(0,369) );
@@ -282,7 +292,7 @@ void AddAlien()
         break;
     case 1:
         //Jelly
-        pSprite = new AlienSprite(mTextures["jelly"], rcBounds, BA_BOUNCE);
+        pSprite = new AlienSprite("jelly", rcBounds, BA_BOUNCE);
         pSprite->SetName("jelly");
         pSprite->setNumFrames(8);
         pSprite->SetPosition( rnd.getRndInt(0,1) == 0 ? 0: 600, rnd.getRndInt(0,369) );
@@ -290,7 +300,7 @@ void AddAlien()
         break;
     case 2:
         //Timmy
-        pSprite = new AlienSprite(mTextures["timmy"], rcBounds, BA_BOUNCE);
+        pSprite = new AlienSprite("timmy", rcBounds, BA_BOUNCE);
         pSprite->SetName("timmy");
         pSprite->setNumFrames(8);
         pSprite->SetPosition( rnd.getRndInt(0,1) == 0 ? 0: 600, rnd.getRndInt(0,369) );

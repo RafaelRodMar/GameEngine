@@ -38,8 +38,6 @@ public:
 
 ////////////////////////////////////////////////////////////////////////////////
 
-Rnd ran;
-
 //constructors
 Background::Background(int pwidth, int pheight, sf::Color pcolor)
 {
@@ -93,8 +91,8 @@ StarryBackground::StarryBackground(int pwidth, int pheight, int pnumStars, int p
     //create the stars
     for (int i=0;i<numStars;i++)
     {
-        ptStars[i].x = ran.getRndInt(0,width);
-        ptStars[i].y = ran.getRndInt(0,height);
+        ptStars[i].x = rnd.getRndInt(0,width);
+        ptStars[i].y = rnd.getRndInt(0,height);
         sf::Color c(128,128,128,255);
         starColors[i] = c;
     }
@@ -111,9 +109,9 @@ void StarryBackground::Update()
     int rgb;
     for(int i=0;i<numStars;i++)
     {
-        if( ran.getRndInt(0,twinkleDelay) == 0 )
+        if( rnd.getRndInt(0,twinkleDelay) == 0 )
         {
-            rgb = ran.getRndInt(0,255);
+            rgb = rnd.getRndInt(0,255);
             sf::Color c(rgb,rgb,rgb,255);
             starColors[i] = c;
         }

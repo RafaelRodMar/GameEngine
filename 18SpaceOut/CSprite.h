@@ -30,10 +30,10 @@ protected:
 
 public:
   // Constructor(s)/Destructor
-  CSprite(sf::Texture &pTexture);
-  CSprite(sf::Texture &pTexture, sf::FloatRect &Bounds,
+  CSprite(const std::string &texture);
+  CSprite(const std::string &texture, sf::FloatRect &Bounds,
     BOUNDSACTION baBoundsAction = BA_STOP);
-  CSprite(sf::Texture &pTexture, sf::Vector2f pPosition, sf::Vector2f pVelocity, int iZOrder,
+  CSprite(const std::string &texture, sf::Vector2f pPosition, sf::Vector2f pVelocity, int iZOrder,
     sf::FloatRect &Bounds, BOUNDSACTION baBoundsAction = BA_STOP);
   virtual ~CSprite();
 
@@ -181,10 +181,10 @@ inline void CSprite::SetVelocity(sf::Vector2f pvelocity)
 
 //////////////////////////////////////////////////////////////
 
-CSprite::CSprite(sf::Texture &pTexture)
+CSprite::CSprite(const std::string &texture)
 {
   // Initialize the member variables
-  psprite.setTexture(pTexture);
+  psprite.setTexture(mTextures[texture]);
   psprite.setPosition(0,0);
 
   CalcCollisionRect();
@@ -204,10 +204,10 @@ CSprite::CSprite(sf::Texture &pTexture)
   oneCycle = false;
 }
 
-CSprite::CSprite(sf::Texture &pTexture, sf::FloatRect &prcBounds, BOUNDSACTION baBoundsAction)
+CSprite::CSprite(const std::string &texture, sf::FloatRect &prcBounds, BOUNDSACTION baBoundsAction)
 {
   // Initialize the member variables
-  psprite.setTexture(pTexture);
+  psprite.setTexture(mTextures[texture]);
   psprite.setPosition(0,0);
 
   CalcCollisionRect();
@@ -224,11 +224,11 @@ CSprite::CSprite(sf::Texture &pTexture, sf::FloatRect &prcBounds, BOUNDSACTION b
   oneCycle = false;
 }
 
-CSprite::CSprite(sf::Texture &pTexture, sf::Vector2f ptPosition, sf::Vector2f ptVelocity, int iZOrder,
+CSprite::CSprite(const std::string &texture, sf::Vector2f ptPosition, sf::Vector2f ptVelocity, int iZOrder,
     sf::FloatRect &prcBounds, BOUNDSACTION baBoundsAction)
 {
   // Initialize the member variables
-  psprite.setTexture(pTexture);
+  psprite.setTexture(mTextures[texture]);
   psprite.setPosition(ptPosition.x, ptPosition.y);
 
   CalcCollisionRect();

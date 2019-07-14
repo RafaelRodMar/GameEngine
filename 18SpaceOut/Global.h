@@ -9,15 +9,6 @@ std::map<std::string, sf::Sound> mSounds;
 //Music
 std::map<std::string, sf::Music*> mMusic;
 
-//global variables
-int fireinputdelay;
-int score, numlives, difficulty;
-bool gameover = false;
-bool canfire = true;
-
-void NewGame();
-void AddAlien();
-
 class Rnd{
 public:
     std::mt19937 rng;
