@@ -190,10 +190,7 @@ CSprite::CSprite(const std::string &texture)
   CalcCollisionRect();
   velocity.x = velocity.y = 0;
   ZOrder = 0;
-  rcBounds.top = 0;
-  rcBounds.left = 0;
-  rcBounds.width = 640; //default values
-  rcBounds.height = 480;
+  rcBounds = sf::FloatRect(0,0,640,480); //default values
 
   numFrames = 1;
   curFrame = frameDelay = frameTrigger = 0;

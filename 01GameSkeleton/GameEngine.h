@@ -25,7 +25,7 @@ public:
     sf::Time timePerFrame;
     sf::Time elapsed = sf::Time::Zero;
 
-    GameEngine(std::string pcaption, int pwidth, int pheight);  //calls GameInitialize
+    GameEngine(const std::string &pcaption, int pwidth, int pheight);  //calls GameInitialize
     //virtual ~GameEngine(){};
 
     //general methods
@@ -47,7 +47,7 @@ public:
 //pointer to the game engine
 GameEngine *GameEngine::pGameEngine = nullptr;
 
-GameEngine::GameEngine(std::string pcaption, int pwidth, int pheight)
+GameEngine::GameEngine(const std::string &pcaption, int pwidth, int pheight)
 {
     //set variables for the game engine
     pGameEngine = this;
